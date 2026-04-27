@@ -19,7 +19,7 @@ jobs:
           node-version: 20
 
       - name: Instalar dependências
-        run: npm ci
+        run: npm install
 
       - name: Rodar testes
         run: npm test
@@ -36,16 +36,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install awsebcli
 
-      - name: Configurar Elastic Beanstalk
+      - name: Deploy para Elastic Beanstalk
         run: |
-          eb init minha-api \
-          --platform node.js \
-          --region us-east-2
-
-      - name: Selecionar ambiente
-        run: |
+          eb init minha-api --platform "Node.js 20 running on 64bit Amazon Linux 2" --region us-east-2
           eb use Minha-api-env
-
-      - name: Fazer deploy no Elastic Beanstalk
-        run: |
           eb deploy Minha-api-env
