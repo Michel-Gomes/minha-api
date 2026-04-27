@@ -3,7 +3,8 @@ const app = express();
 app.get("/", (req, res) => {
     res.json({
         status: "ok",
-        message: "API Node.js publicada no Elastic Beanstalk"
+        message: "API Node.js publicada no Elastic Beanstalk",
+        description: "Aula de CI/CD com GitHub Action e AWS"
     });
 });
 app.get("/health", (req, res) => {
